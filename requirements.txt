@@ -3,4 +3,4 @@ uvicorn[standard]==0.30.6
 httpx==0.27.2
 
 azure-communication-identity==1.5.0
-azure-communication-networktraversal==1.0.0
+azure-communication-networktraversal==1.1.0b2
