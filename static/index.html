@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Meg Kiosk</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://aka.ms/csspeech/jsbrowserpackageraw"></script>
+  </head>
+  <body>
+    <div class="wrap">
+      <section class="stage">
+        <video id="avatarVideo" autoplay muted playsinline></video>
+        <audio id="avatarAudio" autoplay></audio>
+      </section>
+
+      <section class="panel">
+        <h1>Meg Kiosk</h1>
+        <div class="status" id="status">Loading...</div>
+
+        <div class="row">
+          <button class="lang" data-lang="en-SG">English (SG)</button>
+          <button class="lang" data-lang="zh-CN">中文</button>
+          <button class="lang" data-lang="ms-MY">Bahasa Melayu</button>
+        </div>
+
+        <textarea id="text" rows="8" placeholder="Enter text to speak"></textarea>
+
+        <div class="row">
+          <button id="btnConnect">Connect</button>
+          <button id="btnSpeak">Speak</button>
+          <button id="btnStop">Stop</button>
+        </div>
+
+        <div class="hint">
+          Speech region: <strong>southeastasia</strong>. Avatar: <strong>Meg / business</strong>.
+        </div>
+        <div class="hint">
+          If video or audio fails, ensure TURN relay access to <code>relay.communication.microsoft.com</code> on UDP 3478 and TCP 443.
+        </div>
+      </section>
+    </div>
+
+    <script src="/static/kiosk.js"></script>
+  </body>
+</html>
