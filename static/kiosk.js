@@ -29,6 +29,10 @@ let reconnectTimer = null;
 let isConnecting = false;
 let isConnected = false;
 
+console.log("SpeechSDK:", SpeechSDK);
+console.log("START AVATAR");
+await synth.startAvatarAsync(pc);
+
 function setStatus(msg) { statusEl.textContent = msg; }
 
 function setDefaultTextByLang(lang) {
