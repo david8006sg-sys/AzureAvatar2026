@@ -136,12 +136,19 @@ async def get_ice_servers() -> List[Dict[str, Any]]:
 
 @app.post("/api/session")
 async def create_session(req: SessionRequest):
-    if req.language not in LANGUAGE_MAP:
-        raise HTTPException(status_code=400, detail="Unsupported language")
+    try:
+        if req.language not in LANGUAGE_MAP:
+            raise HTTPException(status_code=400, detail="Unsupported language")
 
-    speech_token = await get_speech_token()
-    ice_servers = await get_ice_servers()
-    voice = LANGUAGE_MAP[req.language]["voice"]
+        speech_token = await get_speech_token()
+        ice_servers = await get_ice_servers()
+        voice = LANGUAGE_MAP[req.language]["voice"]
+
+    except HTTPException:
+        raise
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Error creating session: {str(e)}")
+
 
     return {
         "sessionId": str(uuid.uuid4()),
